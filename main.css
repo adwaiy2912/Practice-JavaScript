@@ -1,0 +1,398 @@
+/*
+selector {
+    property: property value;
+    <----------------------->
+            declaration
+}
+*/
+
+/* applies changes to all elements; not used often  */
+* {
+   font-family: var(--FF);
+   box-sizing: border-box;
+}
+
+/* define variables in root */
+:root {
+   --BGCOLOR: #333;
+   --BLACK-BORDER: #333;
+   --BLACKCOLOR: #333;
+   --ACOLOR: bisque;
+
+   --FF: Arial;
+   --FSIZE: 1rem;
+   --FS-CLAMP: clamp(1rem, 2.5vh, 2rem);
+   /* clamp, set font size that grows with size of viewport -> dosent go below min fs or above max fs
+    clamp(min-fs, viewport-fs, max-fs);
+    */
+
+   --SHADOWS: 3px 3px 5px #000;
+}
+
+/* light mode */
+@media (prefers-color-scheme: light) {
+   :root {
+      --BGCOLOR: whitesmoke;
+   }
+}
+
+html {
+   scroll-behavior: smooth;
+   /* 
+    absolute font size is not recommended
+    font-size: 16px;
+
+    instead use rem (root em); uses relative sizing to browser (usually 16px); _rem where _ is the factor -> size increases/decreases; rem is relative to the root not parent; em is relative to parent
+    */
+   font-size: var(--FSIZE);
+}
+
+body {
+   background-color: var(--BGCOLOR);
+   color: aliceblue;
+}
+
+header h1 {
+   text-align: center;
+   font-size: 2.5rem;
+   text-shadow: var(--SHADOWS);
+   /* text-shadow: x-axis y-axis blur-val color */
+}
+
+nav {
+   background-color: royalblue;
+   border-color: var(--BLACK-BORDER);
+   border-radius: 10px 0px;
+   padding: 0.75rem;
+   outline: 3px solid;
+   outline-offset: -3px;
+   text-align: center;
+   position: -webkit-sticky;
+   position: sticky;
+   top: 0;
+   z-index: 1;
+
+   display: grid;
+   grid-auto-flow: column;
+   /*
+    diplay: grid; (grid layout)
+    grid-auto-flow, change layout of grid
+    grid-template-columns, specifies the number (and the widths) of columns; 1fr (1 fraction) -> to assign relative space to grid; eg. 2fr 1 fr 1fr -> assigns twice the space to 1st col than 2nd & 3rd col; repeat(4, 1fr) -> 4 col. with equal (1fr) spacing
+    column-gap, gives gap btw columns
+    place-content, defines pos. for content; for justify and align content both
+    
+    to practice grid - https://cssgridgarden.com
+    */
+}
+
+/* is pseudo selector -> used for all selectors inside any other ele. (like nav); increases DRY (don't repeat yourself)*/
+nav :is(a, a:any-link) {
+   text-decoration: none;
+   color: var(--ACOLOR);
+}
+
+nav a:hover {
+   background-color: aliceblue;
+   color: var(--BLACKCOLOR);
+}
+a {
+   color: var(--ACOLOR);
+}
+
+/* higher priority than body selector i.e. more specific than body */
+a:hover {
+   color: blanchedalmond;
+}
+
+/* using pseudo selector to increase the size of 1st letter for all h1 */
+h1::first-letter {
+   font-size: 1.3em;
+}
+
+/* applies to both h2 and h3 */
+h2,
+h3 {
+   color: cornflowerblue;
+}
+
+/* applies changes to em which is inside of p tag only*/
+p em {
+   color: burlywood;
+}
+
+/* . before selector makes it a class; more specific than element selectors */
+.aquamarine {
+   color: aquamarine;
+}
+
+/* # before selector makes it an ID; more specific than class; not good practice to use in .css file */
+#aqua {
+   color: aqua;
+}
+
+.boxModel {
+   box-sizing: border-box;
+
+   border: 2px ridge bisque;
+   margin: 1rem;
+   padding: 1rem;
+   outline: 3px ridge burlywood;
+   /*
+    box model hierarchy, content > padding > border > margin
+
+    box-sizing: content box, includes only the content in box model calc.
+                border box, inc. the content, padding, border & margin in calc.
+    border: width style color
+
+    order in margin property must be maintained
+    margin: 1rem 1.5rem 2rem 2.5rem; equlas
+    margin-top: 1rem;
+    margin-right: 1.5rem;
+    margin-bottom: 2rem;
+    margin-left: 2.5rem;
+ 
+    can be done for padding also
+
+    outline, not a part of the box model
+    */
+}
+
+ol {
+   list-style: upper-roman;
+   list-style-position: inside;
+}
+
+ol ::marker {
+   color: whitesmoke;
+}
+
+/* to use an image as list style/icon
+ol li {
+	margin: 1em;
+	padding: 0em 1.5em;
+    list-style: none; 
+	background-image: url("img/skull-icon.png");
+	background-repeat: no-repeat;
+	background-position: left top;
+	background-size: 1em;
+}
+*/
+
+.opposite {
+   display: inline-block;
+   background-color: white;
+   color: var(--BLACKCOLOR);
+   margin-top: 0.5rem;
+   margin-bottom: 1rem;
+   padding: 0.5rem;
+   /*
+    display - for rendering box
+    block, level elements stack on top of each other -> creates a new line; have width of parent (by default, usually 100%)
+    inline, do not stack & not create a new line; takes width of content (unless on padding); margin can not be applied
+    inline-block, hybrid btw block & inline; can apply padding and margin
+    none, removes the element from the web page/browser
+    */
+}
+
+.block {
+   float: right;
+   /* float, used to wrap text around the div/img */
+}
+
+.bionic {
+   background-color: darkgrey;
+   border: 1px solid var(--BLACK-BORDER);
+   margin: 1rem;
+   padding: 1rem;
+   display: flow-root;
+}
+
+.pos {
+   position: relative;
+   /*
+    position - set position of element
+    static, default; no effect from top, right, etc
+    relative, pos. acc. to flow of doc.; effected by top, right, left, etc
+    absolute, no space created for this ele.; ele. is pos. relative to closest ancestor (or browser); eff. byb top, right, etc
+    fixed, no space created; pos. relative to its initial block; rem. from normal doc. flow
+    sticky, hybrid btw relative & fixed; ele. is relatively pos. until scrolled -> after which it becomes fixed
+    */
+}
+
+.flexBox {
+   display: flex;
+   justify-content: space-evenly;
+   align-items: center;
+   flex-flow: row-reverse wrap;
+   align-content: space-evenly;
+   /* 
+    display: flex; (flexBox) 
+    justify-content, align horizontally (x-axis) -> unless changed
+    align-items, align vertically (y-axis) -> unless changed; det. how items as whole are aligned
+    flex-direction, to change direction; row, col, reversed, etc; default -> row
+    flex-wrap; to wrap ele. to next line if no space
+    flex-flow: flex-direction flex-wrap
+    align-content, to align the rows; like justify-content; determines spacing btw lines
+
+    to practice flex - https://flexboxfroggy.com
+    */
+
+   background-color: ghostwhite;
+   background-image: url(img/pattern2-img.png),
+      linear-gradient(to left, blue, #fff);
+   background-repeat: repeat, no-repeat;
+   background-size: cover, auto;
+   background-position: right, center;
+   /* applying 2 images and their resp. prop. to container */
+}
+
+.img {
+   width: 40%;
+   height: auto;
+   display: block;
+   /*
+    images - def. display -> inline ele.
+    width & height, provide % to width and auto to height -> img becomes responsive
+    border-radius: 50%; makes it round (for square img only)
+    background-repeat: repeat; if img not cover the entier container -> it repeats itself to cover it; repeat by def.
+    background-size: cover; img grows/stretches to cover the entire container
+    background-positionL center center; centres the img from x- and y-axes 
+    */
+}
+
+.figcap {
+   text-align: center;
+   color: black;
+}
+
+.clip {
+   font-size: 5rem;
+   text-align: center;
+   background-image: url(img/pattern2-img.png);
+   background-size: 100%;
+   -webkit-background-clip: text;
+   background-clip: text;
+   color: hsla(0, 0%, 0%, 0.25);
+   /* to make img as a background/text color */
+}
+
+/*
+Media Query syntax,
+@media media-type and (condition: breakpoint) {
+    // CSS
+}
+
+eg. min- or max-width, for smaller decives (like phones)
+    orientation: landscape,
+    min-aspect-ratio: width/height, 
+*/
+
+@media screen and (min-width: 576px) {
+   body {
+      background-color: #222;
+      color: wheat;
+   }
+}
+@media screen and (min-width: 768px) {
+   body {
+      background-color: #111;
+      color: burlywood;
+   }
+}
+
+/* gives red border to images which do not have an alt attribute */
+img:not([alt]) {
+   border: 5px solid red;
+}
+
+.sq-group {
+   display: grid;
+   flex-flow: column nowrap;
+   justify-content: center;
+   align-items: center;
+   gap: 1rem;
+}
+
+.sq {
+   width: 100px;
+   height: 100px;
+   background-color: #fff;
+   border: 1px solid var(--BLACK-BORDER);
+   border-radius: 10%;
+   margin: 1rem;
+   display: grid;
+   place-content: center;
+}
+
+.sq-group div:first-child {
+   background-color: bisque;
+   /* transform: translateX(50%);
+    transform: rotateX(180deg);
+    transform: scaleX(150%); 
+    transform: skewX(10deg); */
+}
+
+.sq-group div:nth-child(2) {
+   background-color: aquamarine;
+   /* transform: translateY(50%);
+    transform: rotateY(180deg);
+    transform: scaleY(150%);
+    transform: skewY(10deg); */
+}
+
+.sq-group div:last-child {
+   background-color: aqua;
+   /* transform: translate(40%, 40%);
+    transform: rotate(90deg);
+    transform: scale(120%);
+    transform: skew(10deg); */
+}
+
+.sq-group div:hover {
+   background-color: cornflowerblue;
+   /* transition-property: background-color, transform;
+    transition-duration: 1s, 1.5s;
+    transition-delay: 0.5s (applied to both bg-colro & transform);
+    transition-timing-function: ease-in-out; (opt. -> def. ease)*/
+   transition: all 1.5s ease-in-out 0.5s;
+}
+
+.sq-group div:last-child:hover {
+   transform: rotate(180deg);
+}
+/*
+transform -
+translate(x, y); % shows the amt shift wrt to the size of the object (not container or page)
+rotate(deg); same as rotateZ(); rotates img wrt to axis perpendicular to screen
+scale(%, %); scales both x and y
+skew(deg, deg); titles both x and y axes wrt to screen
+*/
+
+.animate {
+   /* animation-name: slide;
+    animation-duration: 5s;
+    animation-timing-function: ease;
+    animation-delay: 0.5s;
+    animation-iteration-count: 2;
+    animation-direction: alternate;
+    animation-fill-mode: normal; */
+   animation: slide 5s 0.5s 2 alternate;
+}
+/*
+animation: name duration timing-function delay iteration-count direction fill-mode;
+*/
+
+@keyframes slide {
+   0% {
+      transform: translateX(0);
+   }
+   33% {
+      transform: translateX(200px) rotate(180deg);
+   }
+   66% {
+      transform: translateX(-200px) rotate(-180deg);
+   }
+   100% {
+      transform: translateX(0);
+   }
+}

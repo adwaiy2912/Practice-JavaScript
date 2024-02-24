@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="author" content="adwaiy2912" />
+      <meta
+         name="description"
+         content="This is a practice html page for learning html, css and js"
+      />
+      <title>helloWorld</title>
+      <link rel="icon" href="img/skull-icon.png" type="image/x-icon" />
+      <link rel="stylesheet" href="main.css" />
+      <script type="module" src="index.js"></script>
+      <!-- defer, used to load the DOM before running the index.js script
+    type="module", defer is auto. used -->
+   </head>
+
+   <body>
+      <header>
+         <h1>Hello World</h1>
+      </header>
+
+      <nav>
+         <a href="#cosmos">Cosmos</a>
+         <a href="#bio-eng">Bioengineering</a>
+         <a href="#micro">Microcosmic</a>
+      </nav>
+
+      <main>
+         <section id="cosmos">
+            <h1>Exploring the Enigmatic Cosmos</h1>
+
+            <h2>Celestial Ballet of Stars</h2>
+            <p class="aquamarine boxModel">
+               In the vast expanse of the cosmos, stars twirl in a mesmerizing
+               dance, weaving tales of creation and destruction.
+               <br />
+               <!-- line break, moves text ot next line-->
+               From distant nebulae to the burning cores of massive suns, the
+               celestial ballet unfolds across the cosmic canvas.
+            </p>
+
+            <h3>Galactic Symphony of Black Holes</h3>
+            <p class="aquamarine boxModel" id="aqua">
+               Within the cosmic orchestra, <em>black holes</em> play an
+               enigmatic role. Their gravitational tunes resonate through the
+               fabric of <strong>spacetime</strong>, warping reality itself.
+               Unravel the mysteries of these &nbsp;cosmic maestros as they
+               conduct the symphony of the universe.
+               <!-- 
+                <em> tag, inline tag; used to emphasise text; default -> makes text italic? 
+                <strong> tag, inline tag; used to strongly emphaises text; default -> makes text bold?
+                &nbsp; char entity, used to give a space btw text
+            --></p>
+
+            <h4>Quantum Quirks in the Void</h4>
+            <ol class="aquamarine boxModel">
+               <li>
+                  Venture into the quantum realm, where particles defy our
+                  understanding of reality.
+               </li>
+               <li>
+                  Quantum quirks, entanglements, and the uncertainty principle
+                  shape the fabric of existence.
+               </li>
+               <li>
+                  Explore the strange and fascinating world where the rules of
+                  classical physics surrender to quantum peculiarities.
+               </li>
+            </ol>
+            <!-- 
+            <ol> tag; to create ordered list
+            <ul> tag; to create unordered list
+            <li> tag; to create list item; 1,2,3,... or bullet points
+        -->
+         </section>
+
+         <hr />
+         <!-- horizontal rule, add lines to page -->
+
+         <article id="bio-eng">
+            <h1>Bioengineering Wonders Unveiled</h1>
+            <!-- validator gives warning cause <h1> used after <h2>, <h3>, etc -->
+
+            <h5>CRISPR Chronicles: Editing the Genetic Epic</h5>
+            <dl>
+               <dt>CRISPR-Cas9</dt>
+               <dd>
+                  Embark on a journey through the revolutionary realm of
+                  <a href="https://en.wikipedia.org/wiki/CRISPR">CRISPR-Cas9</a
+                  >, where the code of life itself becomes editable.
+               </dd>
+               <dt>Genetic Engineering</dt>
+               <dd>
+                  Witness the unfolding chapters of genetic engineering, from
+                  eradicating diseases to sculpting the blueprint of living
+                  organisms.
+               </dd>
+               <!-- 
+                <dl> tag; to create discription list
+                <dt> tag; description term
+                <dd> tag; description data
+            --></dl>
+
+            <h6>Synthetic Biology: Crafting Life's Tapestry</h6>
+            <p>
+               In laboratories, scientists wield the tools of synthetic biology
+               to create novel life forms and
+               <span class="opposite">the boundaries of existence</span>. Delve
+               into the ethical conundrums and awe-inspiring innovations that
+               arise as we navigate the uncharted territories of crafting life.
+            </p>
+
+            <!-- <h7>Bionic Marvels: Merging Man and Machine</h7>
+        not a heading tag but still works; validator will give error -->
+            <h6>Bionic Marvels: Merging Man and Machine</h6>
+            <section class="bionic">
+               <img
+                  class="block"
+                  src="img/skull-icon.png"
+                  alt="Skull img"
+                  width="125"
+                  height="125"
+               />
+               <p>
+                  Witness the fusion of humanity and technology as bionic
+                  marvels redefine the limits of our physical capabilities. From
+                  robotic limbs to neural interfaces, explore the forefront of
+                  human augmentation and the intricate dance between biology and
+                  machinery.
+               </p>
+            </section>
+         </article>
+
+         <hr />
+         <div class="flexBox">
+            <img
+               class="img"
+               src="img/skull-icon.png"
+               alt="Skull img"
+               title="Skull image"
+               width="200"
+               height="200"
+               loading="lazy"
+            />
+
+            <figure>
+               <img
+                  src="img/skull-icon.png"
+                  alt="Skull img"
+                  width="150"
+                  height="150"
+               />
+               <figcaption class="figcap">Skull image</figcaption>
+            </figure>
+
+            <p class="clip">Text</p>
+         </div>
+
+         <!--
+            title, shows text when cursor hover over img
+            loading="lazy", dosen't loads the img to web page until the screen view is close to its position in the web page; good perfomance technique
+            figure tag, to tell the browwser that the figcaption and img are related
+        -->
+
+         <hr />
+
+         <section id="micro">
+            <h1>Microcosmic Marvels in Everyday Life</h1>
+
+            <h3>The Secret Life of Microbes</h3>
+            <p>
+               Beneath the surface of everyday existence lies a bustling world
+               of microbes. Discover the microbial communities that shape our
+               environments, influence our health, and play a crucial role in
+               the intricate balance of life.
+            </p>
+
+            <h3>Nano Wonders: Small Marvels, Big Impact</h3>
+            <p>
+               Zoom in to the nano-scale, where materials exhibit extraordinary
+               properties and technologies push the boundaries of what's
+               possible. Explore the nanoworld's impact on medicine,
+               electronics, and the everyday items that surround us.
+            </p>
+
+            <h3>The Dance of Molecules: Chemistry Unveiled</h3>
+            <p>
+               Chemistry orchestrates the dance of molecules, from the
+               simplicity of water to the complexity of organic compounds.
+               Unravel the molecular choreography that underlies the substances
+               we encounter daily, and witness the beauty hidden in the
+               seemingly mundane.
+            </p>
+
+            <div class="sq-group">
+               <div class="sq animate">📱</div>
+               <div class="sq animate">💻</div>
+               <div class="sq animate">🖥️</div>
+            </div>
+         </section>
+      </main>
+
+      <hr />
+
+      <footer>
+         <ul>
+            <li>Click to <a href="img.png">download</a> image</li>
+            <li>
+               Contact me at my <a href="mailto:random@gmail.com">email</a>
+            </li>
+            <li>
+               <a href="tel:+9876543210">Call me</a>
+            </li>
+            <li>
+               Open in
+               <a href="https://www.google.com/" target="_blank">google</a> new
+               tab
+            </li>
+
+            <!--
+                mailto, for redirect to mail provider for writing mail
+                tel, to call the ph. no. in <a> tag
+                target="_blank", to open link in new tab
+            -->
+         </ul>
+
+         <address>
+            Random Place in the World<br />
+            Random Street in the World<br />
+            Random City, Country in the World
+         </address>
+
+         <p>
+            <a href="#">Back To Top</a><br />
+            <a href="/">Back To Home</a>
+         </p>
+      </footer>
+
+      <!-- <script src="index.js"></script> -->
+   </body>
+</html>

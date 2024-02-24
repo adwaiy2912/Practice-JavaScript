@@ -261,10 +261,10 @@ const intitApp = () => {
     */
 };
 
-import playGuitar from "./practice.js";
-import { plucking as pluck } from "./practice.js";
+import playGuitar from "../practice.js";
+import { plucking as pluck } from "../practice.js";
 
-import * as practice from "./practice.js";
+import * as practice from "../practice.js";
 
 console.log(playGuitar());
 console.log(pluck());

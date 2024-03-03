@@ -1,4 +1,4 @@
-# cmd + shift + v -> view preview of markdown
+## cmd + shift + v -> view preview of markdown (on vsCode)
 
 ### Common Media Query breakpoints:
 
